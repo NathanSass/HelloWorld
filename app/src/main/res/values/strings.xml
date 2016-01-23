@@ -8,4 +8,5 @@
 
     <string name="start_service">Start Service</string>
     <string name="stop_service">Stop Service</string>
+    <string name="broadcast_intent">Broadcast Intent</string>
 </resources>

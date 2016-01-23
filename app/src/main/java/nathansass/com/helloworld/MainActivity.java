@@ -91,4 +91,11 @@ public class MainActivity extends AppCompatActivity {
     public void stopService(View view) {
         stopService(new Intent(getBaseContext(), MyFirstService.class));
     }
+
+//    Can also be set statically in the AndroidManifest.xml
+    public void broadcastIntent (View view) {
+        Intent intent = new Intent();
+        intent.setAction("nathansass.com.helloworld.CUSTOM_INTENT");
+        sendBroadcast(intent);
+    }
 }

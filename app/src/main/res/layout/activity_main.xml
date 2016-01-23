@@ -55,6 +55,15 @@
         android:layout_alignParentEnd="true"
         android:onClick="stopService"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/broadcast_intent"
+        android:id="@+id/broadcastIntent"
+        android:layout_above="@+id/startService"
+        android:layout_centerHorizontal="true"
+        android:onClick="broadcastIntent"/>
+
 
 </RelativeLayout>
  
