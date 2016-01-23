@@ -9,7 +9,7 @@ import android.widget.Toast;
  * Created by nathansass on 1/22/16.
  */
 
-public class MyServiceeee extends Service {
+public class MyFirstService extends Service {
     @Override
     public IBinder onBind(Intent argo0) {
         return null;

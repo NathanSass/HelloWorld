@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
 //    Method to start service
     public void startService(View view) {
-        startService(new Intent(getBaseContext(), MyServiceeee.class));
+        startService(new Intent(getBaseContext(), MyFirstService.class));
     }
 
 //    Method to stop service
     public void stopService(View view) {
-        stopService(new Intent(getBaseContext(), MyServiceeee.class));
+        stopService(new Intent(getBaseContext(), MyFirstService.class));
     }
 }
