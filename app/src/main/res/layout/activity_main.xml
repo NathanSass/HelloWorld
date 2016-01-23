@@ -27,13 +27,33 @@
         android:layout_centerHorizontal="true"/>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/papaInWar"
         android:layout_centerHorizontal="true"
         android:src="@drawable/papa"
-        android:layout_below="@+id/helloWorld"/>
+        android:layout_below="@+id/helloWorld"
+        android:adjustViewBounds="true"/>
 
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/start_service"
+        android:id="@+id/startService"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="startService"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/stop_service"
+        android:id="@+id/stopService"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="stopService"/>
 
 
 </RelativeLayout>
