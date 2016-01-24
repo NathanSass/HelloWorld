@@ -30,39 +30,81 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/papaInWar"
-        android:layout_centerHorizontal="true"
         android:src="@drawable/papa"
+        android:adjustViewBounds="true"
         android:layout_below="@+id/helloWorld"
-        android:adjustViewBounds="true"/>
+        android:layout_alignLeft="@+id/helloWorld"
+        android:layout_alignStart="@+id/helloWorld"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_alignTop="@+id/txtName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/textView"/>
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/papaInWar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Grade"
+        android:layout_below="@+id/txtName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+    <EditText
+        android:id="@+id/txtGrade"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/txtName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/start_service"
         android:id="@+id/startService"
-        android:layout_alignParentBottom="true"
+        android:onClick="startService"
+        android:layout_alignBaseline="@+id/stopService"
+        android:layout_alignBottom="@+id/stopService"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="startService"/>
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/stop_service"
         android:id="@+id/stopService"
+        android:onClick="stopService"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="stopService"/>
+        android:layout_alignParentEnd="true"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/broadcast_intent"
-        android:id="@+id/broadcastIntent"
-        android:layout_above="@+id/startService"
-        android:layout_centerHorizontal="true"
-        android:onClick="broadcastIntent"/>
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_below="@+id/txtGrade"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button2"
+        android:layout_below="@+id/txtGrade"
+        android:layout_alignRight="@+id/txtGrade"
+        android:layout_alignEnd="@+id/txtGrade"/>
 
 
 </RelativeLayout>
