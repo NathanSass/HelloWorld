@@ -1,13 +1,18 @@
 package nathansass.com.helloworld;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,4 +103,52 @@ public class MainActivity extends AppCompatActivity {
         intent.setAction("nathansass.com.helloworld.CUSTOM_INTENT");
         sendBroadcast(intent);
     }
+
+    public void onClickAddName (View vew) {
+//        Add a new student record
+        ContentValues values = new ContentValues();
+
+        values.put(StudentsProvider.NAME,
+                ((EditText)findViewById(R.id.txtName)).getText().toString());
+
+        values.put(StudentsProvider.GRADE,
+                ((EditText)findViewById(R.id.txtGrade)).getText().toString());
+
+
+        Uri uri = getContentResolver().insert(StudentsProvider.CONTENT_URI, values);
+
+        Toast.makeText(getBaseContext(),
+                uri.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    public void onClickRetrieveStudents(View view) {
+        // Retrieve student records
+        String URL = "content://com.example.provider.College/students";
+        Uri students = Uri.parse(URL);
+        String[] name = {StudentsProvider._ID, StudentsProvider.NAME, StudentsProvider.GRADE};
+        Cursor c = getContentResolver().query(students, name, null, null, null);
+        if (c.moveToFirst()) {
+
+            do{
+
+                String id           = c.getString(c.getColumnIndex(StudentsProvider._ID));
+                String studentName  = c.getString(c.getColumnIndex(StudentsProvider.NAME));
+                String studentGrade = c.getString(c.getColumnIndex(StudentsProvider.GRADE));
+
+                Toast.makeText(this,
+                        "Id: " + id + " -- Name: " + studentName + " -- Grade: " + studentGrade,
+                        Toast.LENGTH_SHORT).show();
+            } while (c.moveToNext());
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
