@@ -1,7 +1,10 @@
 package nathansass.com.helloworld;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +30,25 @@ public class MainActivity extends AppCompatActivity {
         msgTextView.setText(R.string.hello_world2);
 
         Log.d(msg, "The onCreate() event");
+
+        Configuration config = getResources().getConfiguration();
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        /*
+            Check the device orientation and act accordingly
+         */
+
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            LM_Fragment ls_fragment = new LM_Fragment();
+            fragmentTransaction.replace(android.R.id.content, ls_fragment);
+        } else {
+            PM_Fragment pm_fragment = new PM_Fragment();
+            fragmentTransaction.replace(android.R.id.content, pm_fragment);
+        }
+        fragmentTransaction.commit();
     }
 
 
@@ -123,10 +145,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickRetrieveStudents(View view) {
         // Retrieve student records
-        String URL = "content://com.example.provider.College/students";
+        String URL   = "content://com.example.provider.College/students";
         Uri students = Uri.parse(URL);
-        String[] name = {StudentsProvider._ID, StudentsProvider.NAME, StudentsProvider.GRADE};
-        Cursor c = getContentResolver().query(students, name, null, null, null);
+
+        String[] desiredFieldsToQuery = {StudentsProvider._ID, StudentsProvider.NAME, StudentsProvider.GRADE};
+        Cursor c = getContentResolver().query(students, desiredFieldsToQuery, null, null, null);
+
         if (c.moveToFirst()) {
 
             do{
