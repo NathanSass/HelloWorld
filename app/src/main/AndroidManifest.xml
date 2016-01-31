@@ -26,8 +26,6 @@
         <provider
             android:authorities="com.example.provider.College"
             android:name=".StudentsProvider" />
-        
-      
         <service android:name=".MyFirstService" />
     </application>
 

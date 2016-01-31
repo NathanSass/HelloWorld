@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             Check the device orientation and act accordingly
          */
 
+
         if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             LM_Fragment ls_fragment = new LM_Fragment();
             fragmentTransaction.replace(android.R.id.content, ls_fragment);
@@ -49,6 +51,28 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.replace(android.R.id.content, pm_fragment);
         }
         fragmentTransaction.commit();
+
+        /*
+         Intents & filters
+         */
+
+        Button startBrowser = (Button) findViewById(R.id.start_browser);
+        startBrowser.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://www.google.com"));
+                startActivity(i);
+            }
+        });
+
+        Button startPhone = (Button) findViewById(R.id.start_phone);
+        startPhone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("tel:9510300000"));
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -59,34 +83,45 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    /** Called when the activity is about to become visible. */
+    /**
+     * Called when the activity is about to become visible.
+     */
     @Override
     protected void onStart() {
         super.onStart();
         Log.d(msg, "The onStart() event");
     }
 
-    /** Called when the activity has become visible. */
+    /**
+     * Called when the activity has become visible.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(msg, "The onResume() event");
     }
 
-    /** Called when another activity is taking focus. */
+    /**
+     * Called when another activity is taking focus.
+     */
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(msg, "The onPause() event");
     }
 
-    /** Called when the activity is no longer visible. */
+    /**
+     * Called when the activity is no longer visible.
+     */
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(msg, "The onStop() event");
     }
-    /** Called just before the activity is destroyed. */
+
+    /**
+     * Called just before the activity is destroyed.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -109,32 +144,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    Method to start service
+    //    Method to start service
     public void startService(View view) {
         startService(new Intent(getBaseContext(), MyFirstService.class));
     }
 
-//    Method to stop service
+    //    Method to stop service
     public void stopService(View view) {
         stopService(new Intent(getBaseContext(), MyFirstService.class));
     }
 
-//    Can also be set statically in the AndroidManifest.xml
-    public void broadcastIntent (View view) {
+    //    Can also be set statically in the AndroidManifest.xml
+    public void broadcastIntent(View view) {
         Intent intent = new Intent();
         intent.setAction("nathansass.com.helloworld.CUSTOM_INTENT");
         sendBroadcast(intent);
     }
 
-    public void onClickAddName (View vew) {
+    public void onClickAddName(View vew) {
 //        Add a new student record
         ContentValues values = new ContentValues();
 
         values.put(StudentsProvider.NAME,
-                ((EditText)findViewById(R.id.txtName)).getText().toString());
+                ((EditText) findViewById(R.id.txtName)).getText().toString());
 
         values.put(StudentsProvider.GRADE,
-                ((EditText)findViewById(R.id.txtGrade)).getText().toString());
+                ((EditText) findViewById(R.id.txtGrade)).getText().toString());
 
 
         Uri uri = getContentResolver().insert(StudentsProvider.CONTENT_URI, values);
@@ -145,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickRetrieveStudents(View view) {
         // Retrieve student records
-        String URL   = "content://com.example.provider.College/students";
+        String URL = "content://com.example.provider.College/students";
         Uri students = Uri.parse(URL);
 
         String[] desiredFieldsToQuery = {StudentsProvider._ID, StudentsProvider.NAME, StudentsProvider.GRADE};
@@ -153,10 +188,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (c.moveToFirst()) {
 
-            do{
+            do {
 
-                String id           = c.getString(c.getColumnIndex(StudentsProvider._ID));
-                String studentName  = c.getString(c.getColumnIndex(StudentsProvider.NAME));
+                String id = c.getString(c.getColumnIndex(StudentsProvider._ID));
+                String studentName = c.getString(c.getColumnIndex(StudentsProvider.NAME));
                 String studentGrade = c.getString(c.getColumnIndex(StudentsProvider.GRADE));
 
                 Toast.makeText(this,

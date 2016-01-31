@@ -2,119 +2,122 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="My Grandpa"
         android:id="@+id/heading"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:text="@string/sub_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/helloWorld"
-        android:layout_below="@+id/heading"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="My Grandpa"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
+        android:id="@+id/helloWorld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/heading"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sub_heading"/>
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:layout_alignTop="@+id/txtName"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/textView"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtName"
+        android:text="Name"/>
+
     <EditText
         android:id="@+id/txtName"
-        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/helloWorld"/>
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Grade"
-        android:layout_below="@+id/txtName"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_below="@+id/txtName"
+        android:text="Grade"/>
+
     <EditText
         android:id="@+id/txtGrade"
-        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_below="@+id/txtName"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtName"/>
 
     <Button
+        android:id="@+id/startService"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/start_service"
-        android:id="@+id/startService"
-        android:onClick="startService"
         android:layout_alignBaseline="@+id/stopService"
         android:layout_alignBottom="@+id/stopService"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:onClick="startService"
+        android:text="@string/start_service"/>
 
     <Button
+        android:id="@+id/stopService"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/stop_service"
-        android:id="@+id/stopService"
-        android:onClick="stopService"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:onClick="stopService"
+        android:text="@string/stop_service"/>
 
     <Button
+        android:id="@+id/btnAdd"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="Add Name"
-        android:id="@+id/btnAdd"
-        android:layout_below="@+id/txtGrade"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="onClickAddName" />
+        android:layout_below="@+id/txtGrade"
+        android:onClick="onClickAddName"
+        android:text="Add Name"/>
 
     <Button
+        android:id="@+id/btnRetrieve"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="Retrieve Students"
-        android:id="@+id/btnRetrieve"
-        android:layout_below="@+id/txtGrade"
-        android:layout_alignRight="@+id/txtGrade"
         android:layout_alignEnd="@+id/txtGrade"
-        android:onClick="onClickRetrieveStudents" />
+        android:layout_alignRight="@+id/txtGrade"
+        android:layout_below="@+id/txtGrade"
+        android:onClick="onClickRetrieveStudents"
+        android:text="Retrieve Students"/>
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Browser"
         android:id="@+id/start_browser"
-        android:layout_below="@+id/btnAdd"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
-
-    <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnAdd"
+        android:text="Start Browser"/>
+
+    <Button
         android:id="@+id/start_phone"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/start_browser"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:text="Start Phone"/>
 
 
 </RelativeLayout>
